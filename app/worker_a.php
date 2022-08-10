@@ -5,5 +5,6 @@
 echo "[WORKER A] Running... Hit Ctrl+C to exit. \n";
 
 while (true) {
-    // do something
+    echo "Hello, Olichka!! You are so smart!!";
+    sleep(5);
 }

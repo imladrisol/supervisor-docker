@@ -54,3 +54,23 @@ $ docker-compose stop
 ```bash
 $ docker-compose down --volumes --remove-orphans
 ```
+### Work with supervisor
+ After changes in conf we should re-read the config directory and figure out whether or not any changes has happened made to any config files
+```bash
+$ supervisorctl reread
+$ supervisorctl update
+```
+Check if processes are running
+```bash
+$ supervisorctl
+```
+
+>app_worker_a                     RUNNING   pid 32, uptime 0:00:02
+> 
+>app_worker_b                     RUNNING   pid 33, uptime 0:00:02
+
+Check if process run
+```bash
+$ ps ax | grep 32
+```
+> 32 ?        S      0:00 /usr/local/bin/php /home/project/app/worker_a.php
