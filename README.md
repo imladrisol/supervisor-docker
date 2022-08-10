@@ -74,3 +74,10 @@ Check if process run
 $ ps ax | grep 32
 ```
 > 32 ?        S      0:00 /usr/local/bin/php /home/project/app/worker_a.php
+
+### RabbitMQ
+public message to a queue
+> php publisher.php
+
+consume messages from the queue
+> php worker.php

@@ -8,3 +8,17 @@ services:
             - "./docker/php/conf/supervisord.conf:/etc/supervisor/supervisord.conf"
             - "./docker/php/conf/supervisord-programs.conf:/etc/supervisor/conf.d/app.conf"
         command: ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+    rabbitmq:
+        image: rabbitmq:3-management-alpine
+        ports:
+            - "15672:15672"
+            - "5672:5672"
+        healthcheck:
+            test: [ "CMD", "curl", "-f", "http://localhost:15672" ]
+            interval: 30s
+            timeout: 10s
+            retries: 5
+        volumes:
+            - rabbitmq-data:/var/lib/rabbitmq
+volumes:
+    rabbitmq-data:
